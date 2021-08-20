@@ -19,6 +19,7 @@ namespace ApiClient
 
             var items = await JsonSerializer.DeserializeAsync<List<Item>>(responseBodyAsStream);
 
+
             foreach (var item in items)
             {
                 Console.WriteLine($"{item.setup}\n");
