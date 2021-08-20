@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text.Json;
@@ -13,9 +14,17 @@ namespace ApiClient
         {
             var client = new HttpClient();
             //var currentDate = DateTime.Now;
-            var responseBodyAsString = await client.GetStringAsync("https://official-joke-api.appspot.com/jokes/ten");
-            //var items = await JsonDeserializeAsync<List<Item>>(responseBodyAsStreamTen);
-            Console.WriteLine(responseBodyAsString);
+
+            var responseBodyAsStream = await client.GetStreamAsync("https://official-joke-api.appspot.com/jokes/ten");
+
+            var items = await JsonSerializer.DeserializeAsync<List<Item>>(responseBodyAsStream);
+
+            foreach (var item in items)
+            {
+                Console.WriteLine($"{item.setup}\nz");
+                Console.WriteLine($"Punchline: {item.punchline}\n");
+
+            }
 
         }
 
