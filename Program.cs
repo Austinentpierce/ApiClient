@@ -21,7 +21,7 @@ namespace ApiClient
 
             foreach (var item in items)
             {
-                Console.WriteLine($"{item.setup}\nz");
+                Console.WriteLine($"{item.setup}\n");
                 Console.WriteLine($"Punchline: {item.punchline}\n");
 
             }
